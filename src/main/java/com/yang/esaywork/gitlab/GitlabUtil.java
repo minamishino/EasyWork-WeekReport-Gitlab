@@ -23,6 +23,7 @@ public class GitlabUtil {
     public List<String> getCommits(String projectId, String branch){
         CommitsApi commitsApi = gitLabApi.getCommitsApi();
         List<Commit> commits = commitsApi.getCommits(projectId, branch, null);
+        commits.stream().filter(it->it.getAuthorName().contains("YangZ") && !it.getMessage().contains("Merge")).forEach(System.out::println);
         return null;
     }
 
